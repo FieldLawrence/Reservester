@@ -1,12 +1,13 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_person
 
 
   # GET /restaurants
   # GET /restaurants.json
   def index
     @restaurant = Restaurant.all
+
   end
 
   # GET /restaurants/1
@@ -66,6 +67,10 @@ class RestaurantsController < ApplicationController
   end
 
   private
+    def authenticate_person
+      redirect_to(root_path) if !user_signed_in? && !owner_signed_in?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
       @restaurant = Restaurant.find(params[:id])
