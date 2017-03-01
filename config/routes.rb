@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "pages#home"
+
   devise_for :owners
   devise_for :users
   resources :restaurants
