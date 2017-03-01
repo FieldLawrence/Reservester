@@ -39,7 +39,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
-# gem 'bcrypt-ruby', '3.1.0', :require => 'bcrypt'
+ # gem 'bcrypt-ruby', '3.1.5', :require => 'bcrypt'
 gem 'bcrypt', '3.1.11'
 gem 'autoprefixer-rails'
 
