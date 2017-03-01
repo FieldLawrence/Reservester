@@ -12,5 +12,5 @@
     <%= f.submit "Send me reset password instructions" %>
   </div>
 <% end %>
-
+<%= link_to('Logout', destroy_owner_session_path, :method => :delete) %> |
 <%= render "owners/shared/links" %>

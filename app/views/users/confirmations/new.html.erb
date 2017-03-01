@@ -12,5 +12,6 @@
     <%= f.submit "Resend confirmation instructions" %>
   </div>
 <% end %>
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> |
 
 <%= render "users/shared/links" %>
