@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301203018) do
+ActiveRecord::Schema.define(version: 20170301211632) do
 
   create_table "owners", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20170301203018) do
     t.datetime "updated_at", null: false
     t.string   "image"
     t.integer  "owner_id"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["owner_id"], name: "index_restaurants_on_owner_id"
   end
 

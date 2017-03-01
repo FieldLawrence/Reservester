@@ -1,13 +1,12 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_owner!
+
 
 
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @owner = current_owner
-    @restaurants = @owner.restaurants
+    @restaurant = Restaurant.all
   end
 
   # GET /restaurants/1

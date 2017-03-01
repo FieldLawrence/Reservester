@@ -15,20 +15,37 @@
   </thead>
 
   <tbody>
-    <% @restaurants.each do |restaurant| %>
+    <% @restaurant.each do |restaurant| %>
 
       <tr>
-
+        <% if current_owner == restaurant.owner %>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.seat %></td>
         <td><%= restaurant.cuisine %></td>
         <td><%= link_to 'Show', restaurant %></td>
-
-        <% if owner_signed_in? %>
         <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
         <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-       <% end %>
+
+        <% elsif owner_signed_in? %>
+            <td><%= restaurant.name %></td>
+            <td><%= restaurant.address %></td>
+            <td><%= restaurant.seat %></td>
+            <td><%= restaurant.cuisine %></td>
+            <td><%= link_to 'Show', restaurant %></td>
+
+            <% elsif user_signed_in? %>
+            <td><%= restaurant.name %></td>
+            <td><%= restaurant.address %></td>
+            <td><%= restaurant.seat %></td>
+            <td><%= restaurant.cuisine %></td>
+            <td><%= link_to 'Show', restaurant %></td>
+            <td><%= link_to 'Create Reservation', '#' %></td>
+
+            <% else %>
+              root_path
+
+        <% end %>
 
       </tr>
 

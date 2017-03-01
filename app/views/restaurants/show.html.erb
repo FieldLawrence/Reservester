@@ -25,6 +25,25 @@
 <%= image_tag(@restaurant.image_url.to_s) %>
 </p>
 
+<p>Map:</p>
+  <div id="map" width="30%" height="200px" background-color="grey"> </div>
+
+<script>
+    function initMap() {
+        var geocoder = new google.maps.Geocoder();
+        var address = {lat:<%= @restaurant.latitude %>, lng: <%= @restaurant.longitude %>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: new google.maps.LatLng(<%= @restaurant.latitude %>, <%= @restaurant.longitude %>)
+        });
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["AIzaSyDpdv-ILkn1YaAvNHZw_InF7l8UfV80E80"] %>&callback=initMap">
+</script>
+
 <% if owner_signed_in? %>
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
