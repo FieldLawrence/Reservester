@@ -25,5 +25,7 @@
 <%= image_tag(@restaurant.image_url.to_s) %>
 </p>
 
+<% if owner_signed_in? %>
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
+<% end %>

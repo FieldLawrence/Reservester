@@ -19,7 +19,7 @@
   <p class="navbar-text pull-right">
     <% if user_signed_in? %>
         <%= link_to "Home", root_path %> |
-        <%= link_to "Reservation", '#' %> |
+        <%= link_to "Reservation", restaurants_path%> |
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> |
         Logged in as <strong><%= current_user.email %></strong>.

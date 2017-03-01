@@ -6,12 +6,14 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @owner = current_owner
+    @restaurants = @owner.restaurants
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+
   end
 
   # GET /restaurants/new

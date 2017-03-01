@@ -16,21 +16,29 @@
 
   <tbody>
     <% @restaurants.each do |restaurant| %>
+
       <tr>
+
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.seat %></td>
         <td><%= restaurant.cuisine %></td>
-
         <td><%= link_to 'Show', restaurant %></td>
+
+        <% if owner_signed_in? %>
         <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
         <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       <% end %>
+
       </tr>
+
     <% end %>
   </tbody>
 </table>
 
 <br>
 
+<% if owner_signed_in? %>
 <%= link_to 'New Restaurant', new_restaurant_path %> |
 <%= link_to('Logout', destroy_owner_session_path, :method => :delete) %> |
+<% end %>
