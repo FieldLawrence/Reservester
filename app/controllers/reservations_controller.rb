@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant
   before_action :authenticate_user!
 
   # GET /reservations
@@ -16,7 +17,7 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
-    @reservation = Reservation.new
+    @reservation = Reservation.new(restaurant: @restaurant)
   end
 
   # GET /reservations/1/edit
@@ -26,11 +27,14 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
+
     @reservation = Reservation.new(reservation_params)
+    @reservation.restaurant = @restaurant
+    @reservation.user =  current_user
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+        format.html { redirect_to @reservation.restaurant, notice: 'Reservation was successfully created.' }
         format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new }
@@ -67,6 +71,10 @@ class ReservationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
       @reservation = Reservation.find(params[:id])
+    end
+
+    def set_restaurant
+      @restaurant = Restaurant.find(params[:restaurant_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

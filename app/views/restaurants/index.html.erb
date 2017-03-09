@@ -40,7 +40,7 @@
             <td><%= restaurant.seat %></td>
             <td><%= restaurant.cuisine %></td>
             <td><%= link_to 'Show', restaurant %></td>
-            <td><%= link_to 'Create Reservation', '#' %></td>
+            <td><%= link_to 'New Reservation', new_restaurant_reservation_path(restaurant) %></td>
 
             <% else %>
               root_path

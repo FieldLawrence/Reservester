@@ -32,8 +32,12 @@ ActiveRecord::Schema.define(version: 20170301211632) do
   create_table "reservations", force: :cascade do |t|
     t.string   "name"
     t.integer  "people"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -41,13 +45,15 @@ ActiveRecord::Schema.define(version: 20170301211632) do
     t.string   "address"
     t.integer  "seat"
     t.string   "cuisine"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "image"
     t.integer  "owner_id"
+    t.integer  "reservation_id"
     t.float    "latitude"
     t.float    "longitude"
     t.index ["owner_id"], name: "index_restaurants_on_owner_id"
+    t.index ["reservation_id"], name: "index_restaurants_on_reservation_id"
   end
 
   create_table "users", force: :cascade do |t|
