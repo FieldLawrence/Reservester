@@ -11,14 +11,12 @@
   </thead>
 
   <tbody>
-    <% @reservations.each do |restaurant_reservations| %>
+    <% @reservations.each do |restaurant_reservation| %>
       <tr>
-        <td><%= restaurant_reservations.id %></td>
-        <td><%= restaurant_reservations.name %></td>
-        <td><%= restaurant_reservations.people %></td>
-        <td><%= link_to 'Show', restaurant_reservation_path(restaurant_reservation), :id => @reservation %></td>
-
-
+        <td><%= restaurant_reservation.id %></td>
+        <td><%= restaurant_reservation.name %></td>
+        <td><%= restaurant_reservation.people %></td>
+        <td><%= link_to 'Destroy', restaurant_reservation_path(restaurant_id: @restaurant.id, id: restaurant_reservation.id), method: :delete, data: {confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
