@@ -22,6 +22,7 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1/edit
   def edit
+
   end
 
   # POST /reservations
@@ -45,7 +46,11 @@ class ReservationsController < ApplicationController
 
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
+
   def update
+    @reservation.restaurant = @restaurant
+    @reservation.user =  current_user
+
     respond_to do |format|
       if @reservation.update(reservation_params)
         format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
@@ -54,15 +59,20 @@ class ReservationsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
+
     end
+
   end
 
   # DELETE /reservations/1
   # DELETE /reservations/1.json
   def destroy
+
+    @reservation.restaurant = @restaurant
+    @reservation.user =  current_user
     @reservation.destroy
     respond_to do |format|
-      format.html { redirect_to reservations_url, notice: 'Reservation was successfully destroyed.' }
+      format.html { redirect_to @reservation, notice: 'Reservation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

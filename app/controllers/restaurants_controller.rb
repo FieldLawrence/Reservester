@@ -44,6 +44,7 @@ class RestaurantsController < ApplicationController
 
   # PATCH/PUT /restaurants/1
   # PATCH/PUT /restaurants/1.json
+
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
@@ -58,6 +59,7 @@ class RestaurantsController < ApplicationController
 
   # DELETE /restaurants/1
   # DELETE /restaurants/1.json
+
   def destroy
     @restaurant.destroy
     respond_to do |format|
@@ -74,6 +76,7 @@ class RestaurantsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
       @restaurant = Restaurant.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

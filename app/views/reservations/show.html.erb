@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Name:</strong>
@@ -10,5 +10,6 @@
   <%= @reservation.people %>
 </p>
 
-<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-<%= link_to 'Back', reservations_path %>
+<%= link_to 'Edit', edit_restaurant_reservation_path(@reservation) %> |
+<%= link_to 'Back', restaurant_reservations_path %>
+<%= link_to 'Destroy', restaurant_reservations_path, method: :delete, data: { confirm: 'Are you sure?' } %>

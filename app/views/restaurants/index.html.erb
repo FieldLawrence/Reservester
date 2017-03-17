@@ -41,6 +41,7 @@
             <td><%= restaurant.cuisine %></td>
             <td><%= link_to 'Show', restaurant %></td>
             <td><%= link_to 'New Reservation', new_restaurant_reservation_path(restaurant) %></td>
+            <td> <%= link_to 'Current Reservations', restaurant_reservations_path(restaurant), :id => @restaurant %> </td>
 
             <% else %>
               root_path
