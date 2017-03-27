@@ -18,7 +18,8 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/new
   def new
-
+    @restaurant = Restaurant.new()
+    @restaurant.owner = current_owner
   end
 
   # GET /restaurants/1/edit

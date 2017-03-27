@@ -1,58 +1,51 @@
 
+<div class="container-fluid">
+  <div class="title">
+    <h1>Restaurants</h1>
+  </div>
 
-<h1>Restaurants</h1>
+    <div class="row">
+      <div class="name-column col-md-2 col-sm-2 col-lg-2"> Name </div>
+      <div class="address-column col-md-2 col-sm-2 col-lg-2"> Address </div>
+      <div class="seat-column col-md-2 col-sm-2 col-lg-1"> Seat </div>
+      <div class="cuisine-column col-md-2 col-sm-2 col-lg-2"> Cuisine </div>
+      <div class="show-column col-md-2 col-sm-2 col-lg-1"></div>
+      <div class="edit-column col-md-2 col-sm-2 col-lg-2"></div>
+      <div class="delete-column col-md-2 col-sm-2 col-lg-2"></div>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Seat</th>
-      <th>Cuisine</th>
-      <th colspan="3"></th>
-
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row">
     <% @restaurant.each do |restaurant| %>
-
-      <tr>
         <% if current_owner == restaurant.owner %>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.address %></td>
-        <td><%= restaurant.seat %></td>
-        <td><%= restaurant.cuisine %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+            <div class="name-column col-md-2"><%= restaurant.name %> </div>
+            <div class="address-column col-md-2"><%= restaurant.address %> </div>
+            <div class="seat-column col-md-1"><%= restaurant.seat %> </div>
+            <div class="cuisine-column col-md-2"><%= restaurant.cuisine %> </div>
+            <div class="show-column col-md-1"><%= link_to 'Show', restaurant %> </div>
+            <div class="edit-column col-md-2"> <%= link_to 'Edit', edit_restaurant_path(restaurant) %> </div>
+            <div class="delete-column  col-md-2"> <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %> </div>
         <% elsif owner_signed_in? %>
-            <td><%= restaurant.name %></td>
-            <td><%= restaurant.address %></td>
-            <td><%= restaurant.seat %></td>
-            <td><%= restaurant.cuisine %></td>
-            <td><%= link_to 'Show', restaurant %></td>
-
+            <div class="name-column col-md-2"><%= restaurant.name %> </div>
+            <div class="address-column col-md-2"><%= restaurant.address %> </div>
+            <div class="seat-column col-md-1"><%= restaurant.seat %> </div>
+            <div class="cuisine-column col-md-2"><%= restaurant.cuisine %> </div>
+            <div class="show-column col-md-1"><%= link_to 'Show', restaurant %> </div>
+            <div class="edit-column col-md-2 col-sm-2 col-lg-2"></div>
+            <div class="delete-column col-md-2 col-sm-2 col-lg-2"></div>
             <% elsif user_signed_in? %>
-            <td><%= restaurant.name %></td>
-            <td><%= restaurant.address %></td>
-            <td><%= restaurant.seat %></td>
-            <td><%= restaurant.cuisine %></td>
-            <td><%= link_to 'Show', restaurant %></td>
-            <td><%= link_to 'New Reservation', new_restaurant_reservation_path(restaurant) %></td>
-            <td> <%= link_to 'Current Reservations', restaurant_reservations_path(restaurant), :id => @restaurant %> </td>
-
+            <div class="name-column col-md-2"><%= restaurant.name %> </div>
+            <div class="address-column col-md-2"><%= restaurant.address %> </div>
+            <div class="seat-column col-md-1"><%= restaurant.seat %> </div>
+            <div class="cuisine-column col-md-2"><%= restaurant.cuisine %> </div>
+            <div class="show-column col-md-1"><%= link_to 'Show', restaurant %> </div>
+            <div class="edit-column col-md-2"> <%= link_to 'New Reservation', new_restaurant_reservation_path(restaurant) %> </div>
+            <div class="delete-column col-md-2"> <%= link_to 'Current Reservations', restaurant_reservations_path(restaurant), :id => @restaurant %> </div>
             <% else %>
               root_path
-
         <% end %>
-
-      </tr>
-
     <% end %>
-  </tbody>
-</table>
+
+    </div>
 
 <br>
 
@@ -60,3 +53,4 @@
 <%= link_to 'New Restaurant', new_restaurant_path %> |
 <%= link_to('Logout', destroy_owner_session_path, :method => :delete) %> |
 <% end %>
+</div>
