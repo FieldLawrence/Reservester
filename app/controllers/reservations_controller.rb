@@ -13,6 +13,9 @@ class ReservationsController < ApplicationController
   # GET /reservations/1
   # GET /reservations/1.json
   def show
+    @user = current_user
+    @reservation = @user.reservations
+
   end
 
   # GET /reservations/new

@@ -24,7 +24,7 @@
   <div id="restaurant_image">
   <strong>Image: </strong>
 
-<%= image_tag(@restaurant.image_url.to_s) %>
+<%= image_tag(@restaurant.image_url).to_s %>
   </div>
 </p>
 
@@ -37,7 +37,7 @@
         var address = {lat:<%= @restaurant.latitude %>, lng: <%= @restaurant.longitude %>};
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 10,
+            zoom: 18,
             center: new google.maps.LatLng(<%= @restaurant.latitude %>, <%= @restaurant.longitude %>)
         });
     }
