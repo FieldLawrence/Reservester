@@ -2,12 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.map{
+#map{
   width:30%;
   height:200px;
 }
 
-.restaurant_image{
-  width:30%;
-  height:200px;
+#restaurant_image_large_thumb {
+  width: 30%;
 }

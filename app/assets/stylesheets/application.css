@@ -17,12 +17,12 @@
 .title {
     color: #0b0798;
     text-align: center;
-    text-shadow: -2px 2px 1px #000000;
     font-family: 'Archivo Black', sans-serif;
 }
 
 .main-body-wrapper{
     margin-top: 50px;
+
 }
 
 .btn {

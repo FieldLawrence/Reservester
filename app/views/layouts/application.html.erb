@@ -27,7 +27,7 @@
   <body>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-      <div class="row" style="height: 60px;">
+      <div class="row" style="height: 50px;">
         <p class="navbar-text pull-right" style="margin: 0px; padding: 0px; height: 0px;">
           <% if user_signed_in? %>
               <button type="button" class="btn btn-default navbar-btn"><%= link_to "Home", root_path %></button> |
@@ -62,7 +62,7 @@
   </nav>
 
 
-  <div class="container-fluid row main-body-wrapper">
+  <div class="container-fluid main-body-wrapper">
     <%= yield %>
   </div>
     <!-- Latest compiled and minified JavaScript -->

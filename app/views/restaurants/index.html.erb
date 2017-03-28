@@ -1,54 +1,70 @@
 
-<div class="container-fluid">
+
   <div class="title">
     <h1>Restaurants</h1>
   </div>
 
-    <div class="row">
-      <div class="name-column col-md-2 col-sm-2 col-lg-2"> Name </div>
-      <div class="address-column col-md-2 col-sm-2 col-lg-2"> Address </div>
-      <div class="seat-column col-md-2 col-sm-2 col-lg-1"> Seat </div>
-      <div class="cuisine-column col-md-2 col-sm-2 col-lg-2"> Cuisine </div>
-      <div class="show-column col-md-2 col-sm-2 col-lg-1"></div>
-      <div class="edit-column col-md-2 col-sm-2 col-lg-2"></div>
-      <div class="delete-column col-md-2 col-sm-2 col-lg-2"></div>
-    </div>
+      <% if owner_signed_in? %>
+          <div class="row">
+            <div class="image_name col-md-2"> Image </div>
+            <div class="name-column col-md-2"> Name </div>
+            <div class="address-column col-md-2"> Address </div>
+            <div class="seat-column col-md-1"> Seats </div>
+            <div class="cuisine-column col-md-2"> Cuisine</div>
+            <div class="show-column col-md-1">  </div>
+            <div class="edit-column col-md-1">  </div>
+            <div class="delete-column col-md-1">  </div>
+          </div>
+      <% elsif user_signed_in? %>
+       <div class="row">
+          <div class="image_name col-md-2"> Image </div>
+          <div class="name-column col-md-2"> Name </div>
+          <div class="address-column col-md-2"> Address </div>
+          <div class="cuisine-column col-md-2"> Cuisine </div>
+          <div class="show-column col-md-1">  </div>
+          <div class="show-column col-md-1">  </div>
+          <div class="show-column col-md-2">  </div>
+        </div>
+      <% else %>
+      root_path
+     <% end %>
 
-  <div class="row">
     <% @restaurant.each do |restaurant| %>
         <% if current_owner == restaurant.owner %>
+          <div class="row">
+            <div class="restaurant_image_thumb col-md-2"><%= image_tag(restaurant.image_url(:thumb).to_s) %></div>
             <div class="name-column col-md-2"><%= restaurant.name %> </div>
             <div class="address-column col-md-2"><%= restaurant.address %> </div>
             <div class="seat-column col-md-1"><%= restaurant.seat %> </div>
             <div class="cuisine-column col-md-2"><%= restaurant.cuisine %> </div>
             <div class="show-column col-md-1"><%= link_to 'Show', restaurant %> </div>
-            <div class="edit-column col-md-2"> <%= link_to 'Edit', edit_restaurant_path(restaurant) %> </div>
-            <div class="delete-column  col-md-2"> <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %> </div>
+            <div class="edit-column col-md-1"> <%= link_to 'Edit', edit_restaurant_path(restaurant) %> </div>
+            <div class="delete-column  col-md-1"> <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %> </div>
+          </div>
         <% elsif owner_signed_in? %>
+          <div class="row">
+            <div class="restaurant-image-thumb col-md-2"><%= image_tag(restaurant.image_url(:thumb).to_s) %></div>
             <div class="name-column col-md-2"><%= restaurant.name %> </div>
             <div class="address-column col-md-2"><%= restaurant.address %> </div>
             <div class="seat-column col-md-1"><%= restaurant.seat %> </div>
-            <div class="cuisine-column col-md-2"><%= restaurant.cuisine %> </div>
-            <div class="show-column col-md-1"><%= link_to 'Show', restaurant %> </div>
-            <div class="edit-column col-md-2 col-sm-2 col-lg-2"></div>
-            <div class="delete-column col-md-2 col-sm-2 col-lg-2"></div>
+            <div class="cuisine-column col-md-3"><%= restaurant.cuisine %> </div>
+            <div class="show-column col-md-3"><%= link_to 'Show', restaurant %> </div>
+          </div>
             <% elsif user_signed_in? %>
+          <div class="row">
+            <div class="restaurant_image_thumb col-md-2"><%= image_tag(restaurant.image_url(:thumb).to_s) %></div>
             <div class="name-column col-md-2"><%= restaurant.name %> </div>
             <div class="address-column col-md-2"><%= restaurant.address %> </div>
-            <div class="seat-column col-md-1"><%= restaurant.seat %> </div>
             <div class="cuisine-column col-md-2"><%= restaurant.cuisine %> </div>
             <div class="show-column col-md-1"><%= link_to 'Show', restaurant %> </div>
-            <div class="edit-column col-md-2"> <%= link_to 'New Reservation', new_restaurant_reservation_path(restaurant) %> </div>
+            <div class="edit-column col-md-1"> <%= link_to 'New Reservation', new_restaurant_reservation_path(restaurant) %> </div>
             <div class="delete-column col-md-2"> <%= link_to 'Current Reservations', restaurant_reservations_path(restaurant), :id => @restaurant %> </div>
+          </div>
             <% else %>
               root_path
         <% end %>
     <% end %>
-
-    </div>
-
-<br>
-
+<div class="row">
 <% if owner_signed_in? %>
 <%= link_to 'New Restaurant', new_restaurant_path %> |
 <%= link_to('Logout', destroy_owner_session_path, :method => :delete) %> |

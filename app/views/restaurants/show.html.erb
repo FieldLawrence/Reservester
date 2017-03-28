@@ -21,10 +21,10 @@
 </p>
 
 <p>
-  <div id="restaurant_image">
+  <div id="restaurant_image_large_thumb">
   <strong>Image: </strong>
 
-<%= image_tag(@restaurant.image_url).to_s %>
+<%= image_tag(@restaurant.image_url(:largethumb).to_s) %>
   </div>
 </p>
 
