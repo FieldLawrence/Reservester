@@ -1,38 +1,48 @@
 
+<div class = "row">
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
-
-<p>
-  <strong>Seat:</strong>
-  <%= @restaurant.seat %>
-</p>
-
-<p>
-  <strong>Cuisine:</strong>
-  <%= @restaurant.cuisine %>
-</p>
-
-<p>
-  <div id="restaurant_image_large_thumb">
-  <strong>Image: </strong>
-
-<%= image_tag(@restaurant.image_url(:largethumb).to_s) %>
+  <div class="col-md-3">
+    <strong>Name:</strong>
+    <%= @restaurant.name %>
   </div>
-</p>
 
-<p>Map:</p>
-  <div id="map"> </div>
+  <div class="col-md-3">
+    <strong>Address:</strong>
+    <%= @restaurant.address %>
+  </div>
 
-<script>
-    function initMap() {
+  <div class="col-md-3">
+    <strong>Seat:</strong>
+    <%= @restaurant.seat %>
+  </div>
+
+  <div class="col-md-3">
+    <strong>Cuisine:</strong>
+    <%= @restaurant.cuisine %>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-6">
+
+    <div id="restaurant_image_large_thumb">
+      <strong>Image: </strong>
+    </div>
+
+      <%= image_tag(@restaurant.image_url(:largethumb).to_s) %>
+
+  </div>
+
+
+  <div class="col-md-6">
+    <strong> Map: </strong>
+
+    <div id="map"> </div>
+
+    <script>
+      function initMap() {
         var geocoder = new google.maps.Geocoder();
         var address = {lat:<%= @restaurant.latitude %>, lng: <%= @restaurant.longitude %>};
 
@@ -40,14 +50,18 @@
             zoom: 18,
             center: new google.maps.LatLng(<%= @restaurant.latitude %>, <%= @restaurant.longitude %>)
         });
-    }
-</script>
+      }
+    </script>
 
-<script async defer
+    <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["AIzaSyDpdv-ILkn1YaAvNHZw_InF7l8UfV80E80"] %>&callback=initMap">
-</script>
+    </script>
+  </div>
+</div>
 
-<% if owner_signed_in? %>
+  <div class="row">
+  <% if owner_signed_in? %>
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
 <% end %>
+  </div>

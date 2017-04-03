@@ -64,9 +64,12 @@
               root_path
         <% end %>
     <% end %>
+  
 <div class="row">
-<% if owner_signed_in? %>
-<%= link_to 'New Restaurant', new_restaurant_path %> |
-<%= link_to('Logout', destroy_owner_session_path, :method => :delete) %> |
-<% end %>
-</div>
+    <div class="text-center">
+      <% if owner_signed_in? %>
+        <%= link_to 'New Restaurant', new_restaurant_path %> |
+        <%= link_to('Logout', destroy_owner_session_path, :method => :delete) %> |
+      <% end %>
+    </div>
+  </div>
